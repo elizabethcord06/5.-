@@ -5,21 +5,6 @@ import csv
 import re
 import random
 
-'''
-pwd - показывает название рабочей директории
-ls - показывает содержимое текущей директории
-cd <path> - перемещение по директориям
-mkdir <dirname> - создать директорию (рекурсивно)
-rmtree <dirname> - удалить директорию (рекурсивно)
-touch <filename> - создать пустой файл
-remove <filename> - удалить файл
-cat <filename> - отправляет содержимое файла
-get_file <filename> - отправляет файл в текущую директорию у клиента
-send_file <filename> - принимает файл с текущей директории клиента
-'''
-
-
-
 END_FLAG = b"$$STREAM_FILE_END_FLAG$$"
 FAIL_FLAG = b'$FAILED$'
 PORT = 6666
@@ -253,12 +238,6 @@ def send_file(path, root, size):
     return "uploaded successfully"
 
 
-
-
-
-
-
-
 sock = socket.socket()
 sock.bind(('', PORT))
 sock.listen()
@@ -281,3 +260,20 @@ while True:
         conn.s_send(response)
     # log_print("responsed")
 conn.close() 
+
+
+'''
+cat <filename> - отправляет содержимое файла
+get_file <filename> - отправляет файл в текущую директорию у клиента
+rmtree <dirname> - удалить директорию (рекурсивно)
+touch <filename> - создать пустой файл
+remove <filename> - удалить файл
+pwd - показывает название рабочей директории
+ls - показывает содержимое текущей директории
+cd <path> - перемещение по директориям
+mkdir <dirname> - создать директорию (рекурсивно)pwd - показывает название рабочей директории
+ls - показывает содержимое текущей директории
+cd <path> - перемещение по директориям
+mkdir <dirname> - создать директорию (рекурсивно)
+send_file <filename> - принимает файл с текущей директории клиента
+'''
